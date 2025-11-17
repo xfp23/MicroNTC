@@ -1,6 +1,8 @@
 
 ---
 
+[English](./readme.md)
+
 ## 📗 **中文使用文档**
 
 ### 📘 简介
@@ -59,7 +61,17 @@ Ntc_Sta_t Ntc_Modify(Ntc_Handle_t *handle, Ntc_Conf_t *conf);
 
 ---
 
-#### **4. 删除对象**
+#### **4. 得到阻值**
+
+```c
+Ntc_Sta_t Ntc_CalRes(Ntc_Handle_t handle, uint16_t adc, float *result);
+```
+
+功能: 得到adc对应的电阻阻值
+返回: `NTC_OK` 成功
+
+
+#### **5. 删除对象**
 
 ```c
 Ntc_Sta_t Ntc_Delete(Ntc_Handle_t *handle);
@@ -88,8 +100,6 @@ typedef struct
 ### 💡 示例代码
 
 ```c
-#include "ntc.h"
-
 int main(void)
 {
     Ntc_Handle_t ntc = NULL;
@@ -100,11 +110,16 @@ int main(void)
         .R_fixed = 10000,
         .R25 = 10000,
     };
-    float temp;
+    float temp; 
+    float res;
+    uint16_t adc = 2000;
 
     Ntc_Init(&ntc, &conf);
-    Ntc_CalTempture(ntc, 2000, &temp);
+    Ntc_CalTempture(ntc, adc, &temp);
+    Ntc_CalRes(ntc,adc,&res);
     printf("当前温度: %.2f °C\n", temp);
+    printf("当前阻值: %.2f Ω\n",res);
+
     Ntc_Delete(&ntc);
 }
 ```

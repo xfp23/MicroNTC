@@ -56,3 +56,16 @@ Ntc_Sta_t Ntc_Delete(Ntc_Handle_t *handle)
 
     return NTC_OK;
 }
+
+Ntc_Sta_t Ntc_CalRes(Ntc_Handle_t handle, uint16_t adc, float *result)
+{
+    NTC_CHECKPTR(handle);
+    handle->Voltage = ((float)adc / (float)handle->conf.adcMax) * handle->conf.Vref;
+
+    if (handle->Voltage >= handle->conf.Vref)
+        return NTC_REFERR;
+
+    handle->R = (handle->conf.R_fixed * handle->Voltage) / (handle->conf.Vref - handle->Voltage);
+    *result = handle->R;
+    return NTC_OK;
+}
