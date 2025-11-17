@@ -14,7 +14,7 @@ It provides APIs for initialization, configuration modification, resistance calc
 
 ## 🧩 API Reference
 
-### ⚙️ 配置结构体说明
+### ⚙️ Configuration structure description
 
 ```c
 typedef struct 
