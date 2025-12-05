@@ -57,7 +57,7 @@ Ntc_Sta_t Ntc_Delete(Ntc_Handle_t *handle)
     return NTC_OK;
 }
 
-Ntc_Sta_t Ntc_CalRes(Ntc_Handle_t handle, uint16_t adc, float *result)
+Ntc_Sta_t Ntc_CalcResistance(Ntc_Handle_t handle, uint16_t adc, float *result)
 {
     NTC_CHECKPTR(handle);
     handle->Voltage = ((float)adc / (float)handle->conf.adcMax) * handle->conf.Vref;
@@ -67,5 +67,16 @@ Ntc_Sta_t Ntc_CalRes(Ntc_Handle_t handle, uint16_t adc, float *result)
 
     handle->R = (handle->conf.R_fixed * handle->Voltage) / (handle->conf.Vref - handle->Voltage);
     *result = handle->R;
+    return NTC_OK;
+}
+
+Ntc_Sta_t Ntc_ResToTemp(Ntc_Handle_t handle, float res, float *buffer)
+{
+    NTC_CHECKPTR(handle);
+
+    if (!handle->conf.adcMax)
+        return NTC_RESERR;
+
+    *buffer = (1.0f / ((1.0f / 298.15f) + (1.0f / handle->conf.Bvalue) * logf(res / handle->conf.R25))) - 273.15f;
     return NTC_OK;
 }

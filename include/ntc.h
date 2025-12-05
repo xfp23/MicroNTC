@@ -105,14 +105,16 @@ extern Ntc_Sta_t Ntc_Modify(Ntc_Handle_t *handle, Ntc_Conf_t *conf);
 extern Ntc_Sta_t Ntc_Delete(Ntc_Handle_t *handle);
 
 /**
- * @brief Calculate the Resistor value
+ * @brief 
  * 
- * @param handle Pointer to the NTC handle
- * @param adc ADC raw value
- * @param result Pointer to store the calculate resistor value 
- * @return Ntc_Sta_t Status of operation
+ * @param handle 
+ * @param res 
+ * @param buffer 
+ * @return Ntc_Sta_t 
  */
-extern Ntc_Sta_t Ntc_CalRes(Ntc_Handle_t handle, uint16_t adc, float *result);
+extern Ntc_Sta_t Ntc_ResToTemp(Ntc_Handle_t handle, float res, float *buffer);
+
+extern Ntc_Sta_t Ntc_CalcResistance(Ntc_Handle_t handle, uint16_t adc, float *result);
 
 #ifdef __cplusplus
 }
