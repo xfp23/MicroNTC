@@ -105,16 +105,14 @@ extern Ntc_Sta_t Ntc_Modify(Ntc_Handle_t *handle, Ntc_Conf_t *conf);
 extern Ntc_Sta_t Ntc_Delete(Ntc_Handle_t *handle);
 
 /**
- * @brief 
+ * @brief Calculate temperature directly from resistance value
  * 
  * @param handle 
- * @param res 
- * @param buffer 
- * @return Ntc_Sta_t 
+ * @param res resistance value
+ * @param buffer Pointer to store the calculated temperature (°C).
+ * @return Ntc_Sta_t Ntc_Sta_t Status of operation.
  */
 extern Ntc_Sta_t Ntc_ResToTemp(Ntc_Handle_t handle, float res, float *buffer);
-
-extern Ntc_Sta_t Ntc_CalcResistance(Ntc_Handle_t handle, uint16_t adc, float *result);
 
 #ifdef __cplusplus
 }
