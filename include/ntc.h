@@ -114,6 +114,16 @@ extern Ntc_Sta_t Ntc_Delete(Ntc_Handle_t *handle);
  */
 extern Ntc_Sta_t Ntc_ResToTemp(Ntc_Handle_t handle, float res, float *buffer);
 
+/**
+ * @brief Calculate temperature based on ADC
+ * 
+ * @param handle 
+ * @param adc 
+ * @param result Pointer to store the calculated resistance (Ω). 
+ * @return Ntc_Sta_t Status of operation.
+ */
+extern Ntc_Sta_t Ntc_CalcResistance(Ntc_Handle_t handle, uint16_t adc, float *result);
+
 #ifdef __cplusplus
 }
 #endif
