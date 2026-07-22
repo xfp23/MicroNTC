@@ -3,7 +3,7 @@
 
 /**
  * @file ntc.h
- * @author https://github.com/xfp23/
+ * @author https://xfp23.github.io/
  * @brief NTC thermistor calculation library
  * @version 0.1
  * @date 2025-10-11
