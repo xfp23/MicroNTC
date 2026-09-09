@@ -1,0 +1,17 @@
+*.*
+
+!include/
+
+!src/
+
+!*.md
+
+!.gitignore
+
+!LICENSE
+
+!*.c
+
+!*.h
+
+!CMakeLists.txt

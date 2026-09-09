@@ -29,7 +29,7 @@ typedef struct
 
 ---
 
-### **`Ntc_Sta_t Ntc_Init(Ntc_Handle_t *handle, Ntc_Conf_t *conf);`**
+### **`Ntc_Sta_t Ntc_Init(Ntc_Obj_t *obj, Ntc_Conf_t *conf);`**
 
 **Description:**
 Initializes an NTC object and loads configuration parameters.
@@ -39,14 +39,14 @@ Initializes an NTC object and loads configuration parameters.
 
 ---
 
-### **`Ntc_Sta_t Ntc_CalRes(Ntc_Handle_t handle, uint16_t adc, float *result);`**
+### **`Ntc_Sta_t Ntc_CalRes(Ntc_Obj_t obj, uint16_t adc, float *result);`**
 
 **Description:**
 Calculates the NTC resistance (Ω) from an ADC reading.
 
 **Parameters:**
 
-* `handle` — Initialized NTC handle
+* `obj` — Initialized NTC obj
 * `adc` — ADC raw value
 * `result` — Output resistance (Ω)
 
@@ -55,7 +55,7 @@ Calculates the NTC resistance (Ω) from an ADC reading.
 
 ---
 
-### **`Ntc_Sta_t Ntc_CalTempture(Ntc_Handle_t handle, uint16_t adc_or_res, float *buffer);`**
+### **`Ntc_Sta_t Ntc_CalTempture(Ntc_Obj_t obj, uint16_t adc_or_res, float *buffer);`**
 
 **Description:**
 Calculates temperature (°C).
@@ -63,7 +63,7 @@ Supports input as ADC value or resistance depending on implementation.
 
 **Parameters:**
 
-* `handle` — Initialized NTC handle
+* `obj` — Initialized NTC obj
 * `adc_or_res` — ADC raw value *or* resistance value
 * `buffer` — Output temperature (°C)
 
@@ -72,7 +72,7 @@ Supports input as ADC value or resistance depending on implementation.
 
 ---
 
-### **`Ntc_Sta_t Ntc_Modify(Ntc_Handle_t *handle, Ntc_Conf_t *conf);`**
+### **`Ntc_Sta_t Ntc_Modify(Ntc_Obj_t *obj, Ntc_Conf_t *conf);`**
 
 **Description:**
 Updates the configuration of an existing NTC object.
@@ -82,10 +82,10 @@ Updates the configuration of an existing NTC object.
 
 ---
 
-### **`Ntc_Sta_t Ntc_Delete(Ntc_Handle_t *handle);`**
+### **`Ntc_Sta_t Ntc_Delete(Ntc_Obj_t *obj);`**
 
 **Description:**
-Frees resources and invalidates the handle.
+Frees resources and invalidates the obj.
 
 **Return:**
 `NTC_OK` on success.
@@ -99,7 +99,7 @@ Frees resources and invalidates the handle.
 
 int main(void)
 {
-    Ntc_Handle_t ntc = NULL;
+    Ntc_Obj_t ntc = NULL;
     Ntc_Conf_t conf = {
         .adcMax = 4095,
         .Vref = 5.0f,

@@ -61,68 +61,63 @@ typedef struct
     Ntc_Conf_t conf;    /**< Configuration parameters */
     float R;            /**< Calculated resistance of NTC */
     float Voltage;      /**< Measured voltage at NTC node */
-} Ntc_Obj;
-
-/**
- * @brief Handle to an NTC object.
- */
-typedef Ntc_Obj *Ntc_Handle_t;
+} Ntc_Obj_t;
 
 /**
  * @brief Initialize an NTC object with configuration parameters.
  * 
- * @param handle Pointer to the NTC handle to initialize.
+ * @param obj Pointer to the NTC obj to initialize.
  * @param conf Pointer to configuration structure.
  * @return Ntc_Sta_t Status of initialization.
  */
-extern Ntc_Sta_t Ntc_Init(Ntc_Handle_t *handle, Ntc_Conf_t *conf);
+extern Ntc_Sta_t Ntc_Init(Ntc_Obj_t *obj, Ntc_Conf_t *conf);
 
 /**
  * @brief Calculate the temperature based on ADC reading.
  * 
- * @param handle NTC handle.
+ * @param obj NTC obj.
  * @param adc ADC raw value.
  * @param buffer Pointer to store the calculated temperature (°C).
  * @return Ntc_Sta_t Status of calculation.
  */
-extern Ntc_Sta_t Ntc_CalTempture(Ntc_Handle_t handle, uint16_t adc, float *buffer);
+extern Ntc_Sta_t Ntc_CalTempture(Ntc_Obj_t *obj, uint16_t adc, float *buffer);
 
 /**
  * @brief Modify an existing NTC configuration.
  * 
- * @param handle Pointer to the NTC handle.
+ * @param obj Pointer to the NTC obj.
  * @param conf Pointer to the new configuration.
  * @return Ntc_Sta_t Status of operation.
  */
-extern Ntc_Sta_t Ntc_Modify(Ntc_Handle_t *handle, Ntc_Conf_t *conf);
+extern Ntc_Sta_t Ntc_Modify(Ntc_Obj_t *obj, Ntc_Conf_t *conf);
 
 /**
  * @brief Release and delete the NTC object.
  * 
- * @param handle Pointer to the NTC handle to delete.
+ * @param obj Pointer to the NTC obj to delete.
  * @return Ntc_Sta_t Status of operation.
  */
-extern Ntc_Sta_t Ntc_Delete(Ntc_Handle_t *handle);
+extern Ntc_Sta_t Ntc_Delete(Ntc_Obj_t *obj);
 
 /**
  * @brief Calculate temperature directly from resistance value
  * 
- * @param handle 
+ * @param obj 
  * @param res resistance value
  * @param buffer Pointer to store the calculated temperature (°C).
  * @return Ntc_Sta_t Ntc_Sta_t Status of operation.
  */
-extern Ntc_Sta_t Ntc_ResToTemp(Ntc_Handle_t handle, float res, float *buffer);
+extern Ntc_Sta_t Ntc_ResToTemp(Ntc_Obj_t *obj, float res, float *buffer);
 
 /**
  * @brief Calculate temperature based on ADC
  * 
- * @param handle 
+ * @param obj 
  * @param adc 
  * @param result Pointer to store the calculated resistance (Ω). 
  * @return Ntc_Sta_t Status of operation.
  */
-extern Ntc_Sta_t Ntc_CalcResistance(Ntc_Handle_t handle, uint16_t adc, float *result);
+extern Ntc_Sta_t Ntc_CalcResistance(Ntc_Obj_t *obj, uint16_t adc, float *result);
 
 #ifdef __cplusplus
 }

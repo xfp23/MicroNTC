@@ -26,7 +26,7 @@
 #### **1. 初始化函数**
 
 ```c
-Ntc_Sta_t Ntc_Init(Ntc_Handle_t *handle, Ntc_Conf_t *conf);
+Ntc_Sta_t Ntc_Init(Ntc_Obj_t *obj, Ntc_Conf_t *conf);
 ```
 
 功能：创建并初始化一个 NTC 对象
@@ -37,13 +37,13 @@ Ntc_Sta_t Ntc_Init(Ntc_Handle_t *handle, Ntc_Conf_t *conf);
 #### **2. 温度计算**
 
 ```c
-Ntc_Sta_t Ntc_CalTempture(Ntc_Handle_t handle, uint16_t adc, float *buffer);
+Ntc_Sta_t Ntc_CalTempture(Ntc_Obj_t obj, uint16_t adc, float *buffer);
 ```
 
 功能：根据 ADC 值计算温度（摄氏度）
 参数：
 
-* `handle`：初始化后的 NTC 句柄
+* `obj`：初始化后的 NTC 句柄
 * `adc`：ADC 转换结果
 * `buffer`：输出温度值的地址
   返回：`NTC_OK` 成功
@@ -53,7 +53,7 @@ Ntc_Sta_t Ntc_CalTempture(Ntc_Handle_t handle, uint16_t adc, float *buffer);
 #### **3. 修改参数**
 
 ```c
-Ntc_Sta_t Ntc_Modify(Ntc_Handle_t *handle, Ntc_Conf_t *conf);
+Ntc_Sta_t Ntc_Modify(Ntc_Obj_t *obj, Ntc_Conf_t *conf);
 ```
 
 功能：动态修改 NTC 的配置参数
@@ -64,7 +64,7 @@ Ntc_Sta_t Ntc_Modify(Ntc_Handle_t *handle, Ntc_Conf_t *conf);
 #### **4. 得到阻值**
 
 ```c
-Ntc_Sta_t Ntc_CalRes(Ntc_Handle_t handle, uint16_t adc, float *result);
+Ntc_Sta_t Ntc_CalRes(Ntc_Obj_t obj, uint16_t adc, float *result);
 ```
 
 功能: 得到adc对应的电阻阻值
@@ -74,7 +74,7 @@ Ntc_Sta_t Ntc_CalRes(Ntc_Handle_t handle, uint16_t adc, float *result);
 #### **5. 删除对象**
 
 ```c
-Ntc_Sta_t Ntc_Delete(Ntc_Handle_t *handle);
+Ntc_Sta_t Ntc_Delete(Ntc_Obj_t *obj);
 ```
 
 功能：释放句柄内存
@@ -102,7 +102,7 @@ typedef struct
 ```c
 int main(void)
 {
-    Ntc_Handle_t ntc = NULL;
+    Ntc_Obj_t ntc = NULL;
     Ntc_Conf_t conf = {
         .adcMax = 4095,
         .Vref = 5.0f,
