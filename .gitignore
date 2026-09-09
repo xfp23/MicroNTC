@@ -1,17 +1,24 @@
-*.*
 
-!include/
+*.o
+*.obj
+*.lib
+*.a
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
 
-!src/
+build/
+output/
+Debug/
+Release/
 
-!*.md
+.vscode/
+.idea/
+*.swp
+*.bak
+*~
 
-!.gitignore
-
-!LICENSE
-
-!*.c
-
-!*.h
-
-!CMakeLists.txt
+Thumbs.db
+.DS_Store
